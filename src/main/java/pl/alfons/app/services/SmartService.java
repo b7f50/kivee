@@ -3,9 +3,9 @@ package pl.alfons.app.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DummyService {
+public class SmartService {
 
     public String getName() {
-        return "to jest nazwa";
+        return "This is name";
     }
 }
