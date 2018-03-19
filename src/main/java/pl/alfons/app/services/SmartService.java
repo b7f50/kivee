@@ -8,6 +8,7 @@ import pl.alfons.app.repositories.ProjectRepository;
 
 import java.util.List;
 
+//TODO remove this service later
 @Service
 public class SmartService {
 

@@ -10,6 +10,7 @@ import pl.alfons.app.services.SmartService;
 @Controller
 public class MainPageController {
 
+    //TODO remove dummy service
     @Autowired
     SmartService smartService;
 
