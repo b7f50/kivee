@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pl.alfons.app.entities.Project;
 import pl.alfons.app.repositories.ProjectRepository;
 
+//TODO remove this commandline implementation later when ApplicationRunner separate initialization class is in place
 @SpringBootApplication
 public class AppApplication implements CommandLineRunner {
 
