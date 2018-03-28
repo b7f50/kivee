@@ -1,17 +1,13 @@
 package pl.alfons.app.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 public class Project {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column(nullable = false)
     private String name;
@@ -22,11 +18,17 @@ public class Project {
         this.name = name;
     }
 
-    public UUID getId() {
+    public Project (long id, String name){
+        this.name = name;
+        this.id = id;
+    }
+
+
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
