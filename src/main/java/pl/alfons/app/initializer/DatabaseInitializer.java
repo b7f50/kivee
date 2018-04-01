@@ -7,12 +7,16 @@ import org.springframework.stereotype.Component;
 import pl.alfons.app.entities.Project;
 import pl.alfons.app.entities.Task;
 import pl.alfons.app.repositories.ProjectRepository;
+import pl.alfons.app.services.ProjectService;
 
 @Component
 public class DatabaseInitializer implements ApplicationRunner {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    ProjectService projectService;
 
     @Override
     public void run(ApplicationArguments arg0) {

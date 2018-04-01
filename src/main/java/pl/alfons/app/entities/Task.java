@@ -9,7 +9,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -21,5 +21,12 @@ public class Task {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Task() {
+    }
+
+    public String getName() {
+        return name;
     }
 }
