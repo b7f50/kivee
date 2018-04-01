@@ -1,34 +1,42 @@
 package pl.alfons.app.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "project")
+    private Set<Task> tasks = new HashSet<>();
+
     public Project() {}
+
 
     public Project(String name) {
         this.name = name;
     }
 
-    public Project (long id, String name){
+    public Project (Long id, String name){
         this.name = name;
         this.id = id;
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,5 +46,11 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+
+    public Set<Task> getTasks() {
+        return tasks;
     }
 }
