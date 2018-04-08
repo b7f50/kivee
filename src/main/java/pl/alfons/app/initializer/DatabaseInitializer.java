@@ -22,6 +22,7 @@ public class DatabaseInitializer implements ApplicationRunner {
     public void run(ApplicationArguments arg0) {
 
         Project project1 = new Project("Project name 1");
+        System.out.println(project1.getId());
         Task task1 = new Task ("task name 1");
         Task task2 = new Task ("task name 2");
 
