@@ -1,32 +1,42 @@
 package pl.alfons.app.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.UUID;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Project {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "project")
+    private Set<Task> tasks = new HashSet<>();
+
     public Project() {}
+
 
     public Project(String name) {
         this.name = name;
     }
 
-    public UUID getId() {
+    public Project (Long id, String name){
+        this.name = name;
+        this.id = id;
+    }
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,5 +46,11 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+
+    public Set<Task> getTasks() {
+        return tasks;
     }
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>wjuprodżekt</title>
+</head>
+<body>
+
+<th:block th:if = "${project != null}">
+<p th:text="${project.name}">Wooooooo</p>
+<p th:text="${project.id}">Wooooooo</p>
+<th:block th:each="task : ${project.tasks}">
+
+    <p th:text="${task.name}">name</p>
+
+</th:block>
+</th:block>
+<th:block th:unless="${project != null}">
+    <p>nie ma takiego projektu</p>
+</th:block>
+
+</body>
+</html>

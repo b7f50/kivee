@@ -19,8 +19,6 @@ public class MainPageController {
         model.addAttribute("name", smartService.getName());
         return "mainPage";
     }
-    @GetMapping(value="/tp")
-    public String creatingProject (){
-        return "creatingProject";
-    }
+
+
 }
