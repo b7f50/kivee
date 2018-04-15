@@ -16,7 +16,12 @@
 </th:block>
 </th:block>
 <th:block th:unless="${project != null}">
+    <th:block th:if="${projectForm != null}">
+        <p th:text="${projectForm.name}">Wooooooo</p>
+    </th:block>
+    <th:block th:unless="${projectForm != null}">
     <p>nie ma takiego projektu</p>
+    </th:block>
 </th:block>
 
 </body>
