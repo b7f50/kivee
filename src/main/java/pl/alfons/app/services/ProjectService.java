@@ -17,7 +17,9 @@ public class ProjectService {
        return projectRepository.findOne(longId);
     }
 
-    public void saveProject (ProjectForm projectForm){
-        projectRepository.save(new Project(projectForm.getName()));
+    public Long saveProject (ProjectForm projectForm){
+        Project newProject = new Project(projectForm.getName());
+        projectRepository.save(newProject);
+        return newProject.getId();
     }
 }

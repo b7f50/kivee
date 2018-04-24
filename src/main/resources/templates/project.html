@@ -7,21 +7,16 @@
 <body>
 
 <th:block th:if = "${project != null}">
-<p th:text="${project.name}">Wooooooo</p>
-<p th:text="${project.id}">Wooooooo</p>
-<th:block th:each="task : ${project.tasks}">
+    <p th:text="${project.name}">Wooooooo</p>
+    <p th:text="${project.id}">Wooooooo</p>
+    <th:block th:each="task : ${project.tasks}">
 
-    <p th:text="${task.name}">name</p>
+        <p th:text="${task.name}">name</p>
 
-</th:block>
+    </th:block>
 </th:block>
 <th:block th:unless="${project != null}">
-    <th:block th:if="${projectForm != null}">
-        <p th:text="${projectForm.name}">Wooooooo</p>
-    </th:block>
-    <th:block th:unless="${projectForm != null}">
     <p>nie ma takiego projektu</p>
-    </th:block>
 </th:block>
 
 </body>

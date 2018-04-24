@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 import pl.alfons.app.forms.ProjectForm;
 import pl.alfons.app.services.ProjectService;
 
@@ -29,8 +30,9 @@ public class ProjectViewController {
     }
 
     @PostMapping("/tp")
-    public String projectSubmit(@ModelAttribute ProjectForm project) {
-       projectService.saveProject(project);
-       return "project";
+    public RedirectView projectSubmit(@ModelAttribute ProjectForm project) {
+       Long id = projectService.saveProject(project);
+       //return "project";
+        return new RedirectView("/wp/" + id);
     }
 }
