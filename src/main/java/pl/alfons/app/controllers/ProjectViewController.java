@@ -32,7 +32,6 @@ public class ProjectViewController {
     @PostMapping("/tp")
     public RedirectView projectSubmit(@ModelAttribute ProjectForm project) {
        Long id = projectService.saveProject(project);
-       //return "project";
         return new RedirectView("/wp/" + id);
     }
 }
