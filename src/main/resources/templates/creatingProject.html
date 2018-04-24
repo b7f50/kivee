@@ -2,11 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>kijejtProdżekt</title>
+    <title>Title</title>
 </head>
 <body>
 
-<p>formularz tworzenia projektu</p>
-
+<p>Podaj nazwę projektu:</p>
+    <form action="#" th:action="@{/tp}" th:object="${project}" method="post">
+        <p> Nazwa projektu: <input type="text" th:field="*{name}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
 </body>
 </html>

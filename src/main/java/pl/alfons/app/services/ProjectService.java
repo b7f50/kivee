@@ -3,6 +3,7 @@ package pl.alfons.app.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.alfons.app.entities.Project;
+import pl.alfons.app.forms.ProjectForm;
 import pl.alfons.app.repositories.ProjectRepository;
 
 @Service
@@ -16,4 +17,9 @@ public class ProjectService {
        return projectRepository.findOne(longId);
     }
 
+    public Long saveProject (ProjectForm projectForm){
+        Project newProject = new Project(projectForm.getName());
+        projectRepository.save(newProject);
+        return newProject.getId();
+    }
 }
