@@ -7,8 +7,9 @@
 <body>
 
 <p>Podaj nazwę taska</p>
-<form action="#" th:action="@{/tt}" th:object="${task}" method="post">
+<form action="#" th:action="@{/wp}" th:object="${task}" method="post">
     <p> nazwa taska: <input type="text" th:field="*{name}" /></p>
+    <p><input type="submit" value="Submit" /></p>
 </form>
 </body>
 </html>
