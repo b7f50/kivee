@@ -7,7 +7,7 @@
 <body>
 
 <p>Podaj nazwę projektu:</p>
-    <form action="#" th:action="@{/tp}" th:object="${project}" method="post">
+    <form th:action="@{/tp}" th:object="${project}" method="post">
         <p> Nazwa projektu: <input type="text" th:field="*{name}" /></p>
         <p><input type="submit" value="Submit" /></p>
     </form>
