@@ -29,4 +29,8 @@ public class Task {
     public String getName() {
         return name;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
