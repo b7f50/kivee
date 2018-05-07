@@ -9,11 +9,16 @@
 <th:block th:if = "${project != null}">
     <p th:text="${project.name}">Wooooooo</p>
     <p th:text="${project.id}">Wooooooo</p>
-    <th:block th:each="task : ${project.tasks}">
 
-        <p th:text="${task.name}">name</p>
+    <div style="display: block">
+        <th:block th:each="task : ${project.tasks}">
+        <div style="display: block">
+            <p th:text="${task.name}" style="display: inline-block">name</p>
+            <a th:href="@{/wp/{id}/{tid}(id=${project.id}, tid=${task.id})}">Zobacz zadanie</a>
+        </div>
+        </th:block>
+    </div>
 
-    </th:block>
 </th:block>
 <th:block th:unless="${project != null}">
     <p>nie ma takiego projektu</p>
