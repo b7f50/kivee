@@ -9,6 +9,7 @@
 <p>Podaj nazwę taska</p>
 <form action="#" th:action="@{/wp/{id}/tt(id=${id})}" th:object="${task}" method="post">
     <p> nazwa taska: <input type="text" th:field="*{name}" /></p>
+    <p> opis taska: <input type="text" th:field="*{description}" /></p>
     <p><input type="submit" value="Submit" /></p>
 </form>
 </body>

@@ -31,4 +31,11 @@ public class TaskViewController {
         taskService.saveTask(task, id);
         return new RedirectView("/wp/"+id);
     }
+
+    @GetMapping (value = "wp/{id}/wt/{tid}")
+    public String getTask (Model model, @PathVariable String tid){
+        model.addAttribute("task", taskService.getTaskById(tid));
+        log.debug(taskService.getTaskById(tid).getName());
+        return "task";
+    }
 }
