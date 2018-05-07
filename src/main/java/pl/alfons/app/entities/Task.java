@@ -12,11 +12,15 @@ public class Task {
     @Column(nullable = false)
     private String name;
 
+    @Column
+    private String description;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Project project;
 
-    public Task(String name) {
+    public Task(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 
     public void setProject(Project project) {
@@ -32,5 +36,13 @@ public class Task {
 
     public Long getId() {
         return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

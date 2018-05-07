@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>wjutask</title>
+</head>
+<body>
+
+<th:block th:if = "${task != null}">
+    <p th:text="${task.name}">Wooooooo</p>
+    <p th:text="${task.id}">Wooooooo</p>
+    <p th:text="${task.description}"></p>
+</th:block>
+</body>
+</html>

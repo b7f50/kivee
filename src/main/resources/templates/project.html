@@ -14,7 +14,7 @@
         <th:block th:each="task : ${project.tasks}">
         <div style="display: block">
             <p th:text="${task.name}" style="display: inline-block">name</p>
-            <a th:href="@{/wp/{id}/{tid}(id=${project.id}, tid=${task.id})}">Zobacz zadanie</a>
+            <a th:href="@{/wp/{id}/wt/{tid}(id=${project.id}, tid=${task.id})}">Zobacz zadanie</a>
         </div>
         </th:block>
     </div>
@@ -24,7 +24,7 @@
     <p>nie ma takiego projektu</p>
 </th:block>
 
-<a th:href="@{/wp/{id}/tt(id=${project.id})}"> dodanie taska </a>
+<a th:href="@{/wp/{id}/tt(id=${id})}"> dodanie taska </a>
 
 </body>
 </html>
