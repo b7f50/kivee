@@ -10,7 +10,7 @@ public class Comment {
     private Long id;
 
     @Column
-    private String value;
+    private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Task task;
@@ -18,16 +18,16 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String value) {
-        this.value = value;
+    public Comment(String description) {
+        this.description = description;
     }
 
-    public String getValue() {
-        return value;
+    public String getDescription() {
+        return description;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Task getTask() {

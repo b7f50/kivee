@@ -17,13 +17,19 @@ public class CommentService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public void saveComment(CommentForm commentForm, String id) {
-        Long longId = Long.valueOf(id);
-        Comment comment = new Comment(commentForm.getValue());
-        Task newTask = taskRepository.findOne(longId);
-        newTask.getComments().add(comment);
-        comment.setTask(newTask);
+    public boolean addNewCommentToTask(CommentForm commentForm, String taskId) {
+        Long longId = Long.valueOf(taskId);
+        Task existingTask = taskRepository.findOne(longId);
+        if(existingTask == null) {
+            return false;
+        }
+
+        Comment comment = new Comment(commentForm.getDescription());
+        existingTask.getComments().add(comment);
+        comment.setTask(existingTask);
         commentRepository.save(comment);
+
+        return true;
     }
 
 }

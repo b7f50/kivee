@@ -15,14 +15,14 @@
         <div style="display: block">
             <th:block th:each="comment : ${task.comments}">
                 <div style="display: block">
-                    <p th:text="${comment.value}" style="display: inline-block">name</p>
+                    <p th:text="${comment.description}" style="display: inline-block">name</p>
                 </div>
             </th:block>
         </div>
     </th:block>
 
     <form th:action="@{/wp/{id}/wt/{tid}(id=${id},tid=${tid})}" th:object="${comment}" method="post">
-        <p> dodaj komentarz: <input type="text" th:field="*{value}" /></p>
+        <p> dodaj komentarz: <input type="text" th:field="*{description}" /></p>
         <p><input type="submit" value="Submit" /></p>
     </form>
 

@@ -47,7 +47,7 @@ public class TaskViewController {
 
     @PostMapping("/wp/{id}/wt/{tid}")
     public RedirectView commentSubmit(@ModelAttribute CommentForm comment, @PathVariable String id, @PathVariable String tid) {
-      commentService.saveComment(comment,tid);
+      commentService.addNewCommentToTask(comment,tid);
       return new RedirectView("/wp/{id}/wt/{tid}");
     }
 }
