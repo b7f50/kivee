@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
+import pl.alfons.app.forms.CommentForm;
 import pl.alfons.app.forms.TaskForm;
+import pl.alfons.app.services.CommentService;
 import pl.alfons.app.services.TaskService;
 
 @Slf4j
@@ -18,6 +20,9 @@ public class TaskViewController {
 
     @Autowired
     TaskService taskService;
+
+    @Autowired
+    CommentService commentService;
 
     @GetMapping(value = "/wp/{id}/tt")
     public String creatingTask(Model model, @PathVariable String id) {
@@ -33,9 +38,16 @@ public class TaskViewController {
     }
 
     @GetMapping (value = "wp/{id}/wt/{tid}")
-    public String getTask (Model model, @PathVariable String tid){
+    public String getTask (Model model, @PathVariable String tid, @PathVariable String id){
         model.addAttribute("task", taskService.getTaskById(tid));
+        model.addAttribute("comment", new CommentForm());
         log.debug(taskService.getTaskById(tid).getName());
         return "task";
+    }
+
+    @PostMapping("/wp/{id}/wt/{tid}")
+    public RedirectView commentSubmit(@ModelAttribute CommentForm comment, @PathVariable String id, @PathVariable String tid) {
+      commentService.addNewCommentToTask(comment,tid);
+      return new RedirectView("/wp/{id}/wt/{tid}");
     }
 }
