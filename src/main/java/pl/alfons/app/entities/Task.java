@@ -1,6 +1,8 @@
 package pl.alfons.app.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Task {
@@ -18,9 +20,18 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     private Project project;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "task")
+    private Set<Comment> comments = new HashSet<>();
+
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
     }
 
     public void setProject(Project project) {
