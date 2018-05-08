@@ -9,6 +9,10 @@ import pl.alfons.app.entities.Task;
 import pl.alfons.app.repositories.ProjectRepository;
 import pl.alfons.app.services.ProjectService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Component
 public class DatabaseInitializer implements ApplicationRunner {
 
@@ -37,5 +41,8 @@ public class DatabaseInitializer implements ApplicationRunner {
 
         projectRepository.save(project1);
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
     }
 }

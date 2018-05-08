@@ -1,6 +1,7 @@
 package pl.alfons.app.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Comment {
@@ -14,6 +15,8 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Task task;
+
+    private Date date;
 
     public Comment() {
     }
@@ -38,5 +41,11 @@ public class Comment {
         this.task = task;
     }
 
+    public Date getDate() {
+        return date;
+    }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

@@ -1,6 +1,7 @@
 package pl.alfons.app.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +27,8 @@ public class Task {
     private Set<Comment> comments = new HashSet<>();
 
     private int commentsQuantity = 0;
+
+    private Date date;
 
     public Task(String name, String description) {
         this.name = name;
@@ -65,5 +68,13 @@ public class Task {
 
     public void setCommentsQuantity(int commentsQuantity) {
         this.commentsQuantity = commentsQuantity;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
