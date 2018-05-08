@@ -25,6 +25,8 @@ public class Task {
             mappedBy = "task")
     private Set<Comment> comments = new HashSet<>();
 
+    private int commentsQuantity = 0;
+
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
@@ -55,5 +57,13 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getCommentsQuantity() {
+        return commentsQuantity;
+    }
+
+    public void setCommentsQuantity(int commentsQuantity) {
+        this.commentsQuantity = commentsQuantity;
     }
 }

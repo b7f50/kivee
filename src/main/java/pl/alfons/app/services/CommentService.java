@@ -27,6 +27,7 @@ public class CommentService {
         Comment comment = new Comment(commentForm.getDescription());
         existingTask.getComments().add(comment);
         comment.setTask(existingTask);
+        existingTask.setCommentsQuantity(existingTask.getCommentsQuantity()+1);
         commentRepository.save(comment);
 
         return true;

@@ -14,6 +14,7 @@
         <th:block th:each="task : ${project.tasks}">
         <div style="display: block">
             <p th:text="${task.name}" style="display: inline-block">name</p>
+            <p th:text="${task.commentsQuantity}"></p>
             <a th:href="@{/wp/{id}/wt/{tid}(id=${project.id}, tid=${task.id})}">Zobacz zadanie</a>
         </div>
         </th:block>
