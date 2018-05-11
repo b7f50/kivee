@@ -12,6 +12,7 @@ import pl.alfons.app.repositories.TaskRepository;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -33,6 +34,7 @@ public class CommentService {
         Comment comment = new Comment(commentForm.getDescription());
         existingTask.getComments().add(comment);
         comment.setTask(existingTask);
+        moveTaskToFirst(existingTask);
         existingTask.setCommentsQuantity(existingTask.getCommentsQuantity()+1);
         Date date = new Date();
         comment.setDate(date);
@@ -42,4 +44,11 @@ public class CommentService {
         return true;
     }
 
+    public void moveTaskToFirst(Task taskToMove){
+        List<Task> listOfTasks = taskToMove.getProject().getTasks();
+        listOfTasks.remove(taskToMove);
+        listOfTasks.add(taskToMove);
+        taskToMove.getProject().setTasks(listOfTasks);
+        // prawdopodobnie tutaj dzieje się to tylko lokalnie
+    }
 }

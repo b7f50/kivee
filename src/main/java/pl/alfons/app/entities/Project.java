@@ -1,8 +1,8 @@
 package pl.alfons.app.entities;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 public class Project {
@@ -17,7 +17,7 @@ public class Project {
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "project")
-    private Set<Task> tasks = new HashSet<>();
+    private List<Task> tasks = new LinkedList<>();
 
     public Project() {}
 
@@ -50,7 +50,11 @@ public class Project {
 
 
 
-    public Set<Task> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

@@ -27,11 +27,9 @@ public class TaskService {
     public void saveTask (TaskForm taskForm, String id){
     Long longId = Long.valueOf(id);
     Task newTask = new Task(taskForm.getName(), taskForm.getDescription());
-    Project newProject = projectRepository.findOne(longId);
-    newProject.getTasks().add(newTask);
-    // czy task jest podpięty do projectu w bazie danych czy tylko tu lokalnie?
-    // niby redirectview po submicie wyświetla uaktualnioną listę tasków czyli chyba tak
-    newTask.setProject(newProject);
+    Project existingProject = projectRepository.findOne(longId);
+    existingProject.getTasks().add(newTask);
+    newTask.setProject(existingProject);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         log.debug("new task saved at: "+dateFormat.format(date));

@@ -2,8 +2,8 @@ package pl.alfons.app.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 public class Task {
@@ -24,9 +24,11 @@ public class Task {
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "task")
-    private Set<Comment> comments = new HashSet<>();
+    private List<Comment> comments = new LinkedList<>();
 
     private int commentsQuantity = 0;
+
+    private Date recentCommentDate;
 
     private Date date;
 
@@ -35,12 +37,16 @@ public class Task {
         this.description = description;
     }
 
-    public Set<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Project getProject() {
+        return project;
     }
 
     public Task() {
@@ -76,5 +82,13 @@ public class Task {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Date getRecentCommentDate() {
+        return recentCommentDate;
+    }
+
+    public void setRecentCommentDate(Date recentCommentDate) {
+        this.recentCommentDate = recentCommentDate;
     }
 }
