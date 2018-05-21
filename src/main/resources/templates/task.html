@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>wjutask</title>
 </head>
 <body>
 
-<th:block th:if = "${task != null}">
-    <p th:text="${task.name}">Wooooooo</p>
-    <p th:text="${task.id}">Wooooooo</p>
-    <p th:text="${task.description}"></p>
+<th:block th:if="${task != null}">
+    <p><b>Task name: </b><span th:text="${task.name}">Wooooooo</span></p>
+    <p><b>Task ID: </b><span th:text="${task.id}">Wooooooo</span></p>
+    <p><b>Task description: </b><span th:text="${task.description}"></span></p>
+    <hr/>
 
-    <th:block th:if = "${task.comments != null}">
-        <div style="display: block">
-            <th:block th:each="comment : ${task.comments}">
-                <div style="display: block">
-                    <p th:text="${comment.description}" style="display: inline-block">name</p>
-                </div>
-            </th:block>
-        </div>
+    <th:block th:if="${task.comments != null}">
+        <th:block th:each="comment : ${task.comments}">
+            <p><b>Comment body: </b><span th:text="${comment.body}" style="display: inline-block">name</span></p>
+            <hr />
+        </th:block>
     </th:block>
 
     <form th:action="@{/wp/{id}/wt/{tid}(id=${id},tid=${tid})}" th:object="${comment}" method="post">
-        <p> dodaj komentarz: <input type="text" th:field="*{description}" /></p>
-        <p><input type="submit" value="Submit" /></p>
+        <p> dodaj komentarz: <input type="text" th:field="*{description}"/></p>
+        <p><input type="submit" value="Dodaj"/></p>
     </form>
 
-<!--
-    <a th:href="@{/wp/{id}/tt(id=${id})}"> dodanie komentarza </a>
--->
+    <a th:href="@{/wp/{id}(id=${id})}">powrót do projektu</a>
 
 </th:block>
 </body>

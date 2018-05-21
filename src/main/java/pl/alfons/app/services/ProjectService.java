@@ -12,14 +12,12 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public Project getProjectById (String id){
+    public Project getProjectById(String id) {
         Long longId = Long.valueOf(id);
-       return projectRepository.findOne(longId);
+        return projectRepository.findOne(longId);
     }
 
-    public Long saveProject (ProjectForm projectForm){
-        Project newProject = new Project(projectForm.getName());
-        projectRepository.save(newProject);
-        return newProject.getId();
+    public Project saveProject(ProjectForm projectForm) {
+        return projectRepository.save(new Project(projectForm.getName()));
     }
 }

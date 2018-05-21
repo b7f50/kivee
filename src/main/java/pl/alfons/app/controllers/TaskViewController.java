@@ -31,10 +31,10 @@ public class TaskViewController {
     }
 
     @PostMapping ("/wp/{id}/tt")
-    public RedirectView taskSubmit(@ModelAttribute TaskForm task, @PathVariable String id) {
-        log.debug("lombok debug: checkpoint 1.  id: " +id);
-        taskService.saveTask(task, id);
-        return new RedirectView("/wp/"+id);
+    public RedirectView taskSubmit(@ModelAttribute TaskForm task, @PathVariable(value = "id") String projectId) {
+        log.debug("lombok debug: checkpoint 1.  projectId: " + projectId);
+        taskService.saveTask(task, projectId);
+        return new RedirectView("/wp/" + projectId);
     }
 
     @GetMapping (value = "wp/{id}/wt/{tid}")

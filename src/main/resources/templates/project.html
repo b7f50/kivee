@@ -7,15 +7,16 @@
 <body>
 
 <th:block th:if = "${project != null}">
-    <p th:text="${project.name}">Wooooooo</p>
-    <p th:text="${project.id}">Wooooooo</p>
-
+    <p><b>Project name:</b> <span th:text="${project.name}">Wooooooo</span></p>
+    <p><b>Project id:</b> <span th:text="${project.id}">Wooooooo</span></p>
+    <hr />
     <div style="display: block">
-        <th:block th:each="task : ${project.tasks}">
+        <th:block th:each="task : ${tasks}">
         <div style="display: block">
-            <p th:text="${task.name}" style="display: inline-block">name</p>
-            <p th:text="${task.commentsQuantity}"></p>
+            <p><b>Task name: </b><span th:text="${task.name}" style="display: inline-block">name</span></p>
+            <p><b>Tasks comments quantity: </b><span th:text="${task.commentsQuantity()}"></span></p>
             <a th:href="@{/wp/{id}/wt/{tid}(id=${project.id}, tid=${task.id})}">Zobacz zadanie</a>
+            <hr />
         </div>
         </th:block>
     </div>

@@ -1,21 +1,30 @@
 package pl.alfons.app.entities;
 
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @NonNull
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,69 +35,18 @@ public class Task {
             mappedBy = "task")
     private List<Comment> comments = new LinkedList<>();
 
-    private int commentsQuantity = 0;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
 
-    private Date recentCommentDate;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modifyDate;
 
-    private Date date;
 
-    public Task(String name, String description) {
-        this.name = name;
-        this.description = description;
+    @Transient
+    public int commentsQuantity() {
+        return comments.size();
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public Task() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getCommentsQuantity() {
-        return commentsQuantity;
-    }
-
-    public void setCommentsQuantity(int commentsQuantity) {
-        this.commentsQuantity = commentsQuantity;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Date getRecentCommentDate() {
-        return recentCommentDate;
-    }
-
-    public void setRecentCommentDate(Date recentCommentDate) {
-        this.recentCommentDate = recentCommentDate;
-    }
 }

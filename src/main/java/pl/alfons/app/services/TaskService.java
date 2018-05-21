@@ -9,9 +9,7 @@ import pl.alfons.app.forms.TaskForm;
 import pl.alfons.app.repositories.ProjectRepository;
 import pl.alfons.app.repositories.TaskRepository;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -24,20 +22,26 @@ public class TaskService {
     private ProjectRepository projectRepository;
 
 
-    public void saveTask (TaskForm taskForm, String id){
-    Long longId = Long.valueOf(id);
-    Task newTask = new Task(taskForm.getName(), taskForm.getDescription());
-    Project existingProject = projectRepository.findOne(longId);
-    existingProject.getTasks().add(newTask);
-    newTask.setProject(existingProject);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        log.debug("new task saved at: "+dateFormat.format(date));
-    taskRepository.save(newTask);
+    public Task saveTask(TaskForm taskForm, String projectId) {
+        Long longId = Long.valueOf(projectId);
+        Project existingProject = projectRepository.findOne(longId);
+        if(existingProject == null) {
+            return null;
+        }
+
+        Task newTask = new Task(taskForm.getName(), taskForm.getDescription());
+
+        existingProject.getTasks().add(newTask);
+        newTask.setProject(existingProject);
+        return taskRepository.save(newTask);
     }
 
-    public Task getTaskById (String id){
+    public Task getTaskById(String id) {
         Long longId = Long.valueOf(id);
         return taskRepository.findOne(longId);
+    }
+
+    public List<Task> getTasksByProject(Project project) {
+        return taskRepository.findAllByProjectOrderByModifyDateDesc(project);
     }
 }
