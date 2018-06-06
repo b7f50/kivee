@@ -5,8 +5,9 @@ import pl.alfons.app.entities.Project;
 import pl.alfons.app.entities.Task;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface TaskRepository extends JpaRepository <Task, Long> {
+public interface TaskRepository extends JpaRepository <Task, UUID> {
 
     List<Task> findAllByProjectOrderByModifyDateDesc(Project project);
 }

@@ -3,9 +3,11 @@ package pl.alfons.app.entities;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import pl.alfons.app.forms.CommentForm;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -15,11 +17,11 @@ import java.util.Date;
 public class Comment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     @NonNull
-    private String body;
+    private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Task task;
@@ -32,4 +34,7 @@ public class Comment {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifyDate;
 
+    public Comment(CommentForm commentForm) {
+        this.description = commentForm.getDescription();
+    }
 }

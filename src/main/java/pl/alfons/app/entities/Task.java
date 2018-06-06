@@ -3,11 +3,13 @@ package pl.alfons.app.entities;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import pl.alfons.app.forms.TaskForm;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -17,8 +19,8 @@ import java.util.List;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     @NonNull
     @Column(nullable = false)
@@ -43,10 +45,13 @@ public class Task {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifyDate;
 
+    public Task(TaskForm taskForm) {
+        this.name = taskForm.getName();
+        this.description = taskForm.getDescription();
+    }
 
     @Transient
     public int commentsQuantity() {
         return comments.size();
     }
-
 }

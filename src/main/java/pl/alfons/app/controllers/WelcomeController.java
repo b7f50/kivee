@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
 @Controller
-public class MainPageController {
+public class WelcomeController {
 
     @GetMapping(value = "/")
     public String mainPage() {
-        return "mainPage";
+        return "welcome";
     }
 }
