@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>wjutask</title>
+</head>
+<body>
+
+<th:block th:if="${task != null}">
+    <p><b>Task name: </b><span th:text="${task.name}">Wooooooo</span></p>
+    <p><b>Task ID: </b><span th:text="${task.id}">Wooooooo</span></p>
+    <p><b>Task description: </b><span th:text="${task.description}"></span></p>
+    <hr/>
+
+    <th:block th:if="${task.comments != null}">
+        <th:block th:each="comment : ${task.comments}">
+            <p><b>Comment description: </b><span th:text="${comment.description}" style="display: inline-block">name</span></p>
+            <hr/>
+        </th:block>
+    </th:block>
+
+    <form th:action="@{/project/{project_id}/task/{task_id}/comment(project_id=${project_id},task_id=${task_id})}"
+          th:object="${commentForm}" method="post">
+        <p> dodaj komentarz: <input type="text" th:field="*{description}"/></p>
+        <p><input type="submit" value="Dodaj"/></p>
+    </form>
+
+    <a th:href="@{/project/{project_id}(project_id=${project_id})}">powrót do projektu</a>
+
+</th:block>
+</body>
+</html>
