@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>wjuprodżekt</title>
+</head>
+<body>
+
+<th:block th:if="${project != null}">
+    <p><b>Project name:</b> <span th:text="${project.name}">Wooooooo</span></p>
+    <p><b>Project id:</b> <span th:text="${project.id}">Wooooooo</span></p>
+    <hr/>
+    <div style="display: block">
+        <th:block th:each="task : ${tasks}">
+            <div style="display: block">
+                <p><b>Task name: </b><span th:text="${task.name}" style="display: inline-block">name</span></p>
+                <p><b>Tasks comments quantity: </b><span th:text="${task.commentsQuantity()}"></span></p>
+                <a th:href="@{/project/{project_id}/task/{task_id}(project_id=${project.id}, task_id=${task.id})}">Zobacz
+                    zadanie</a>
+                <hr/>
+            </div>
+        </th:block>
+    </div>
+
+    <a th:href="@{/project/{project_id}/task(project_id=${project_id})}"> dodanie taska </a>
+</th:block>
+<th:block th:unless="${project != null}">
+    <p>nie ma takiego projektu</p>
+</th:block>
+</body>
+</html>

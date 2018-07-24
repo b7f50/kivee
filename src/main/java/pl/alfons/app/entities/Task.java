@@ -1,20 +1,32 @@
 package pl.alfons.app.entities;
 
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import pl.alfons.app.forms.TaskForm;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
+    @NonNull
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @NonNull
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,37 +35,23 @@ public class Task {
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "task")
-    private Set<Comment> comments = new HashSet<>();
+    private List<Comment> comments = new LinkedList<>();
 
-    public Task(String name, String description) {
-        this.name = name;
-        this.description = description;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modifyDate;
+
+    public Task(TaskForm taskForm) {
+        this.name = taskForm.getName();
+        this.description = taskForm.getDescription();
     }
 
-    public Set<Comment> getComments() {
-        return comments;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public Task() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    @Transient
+    public int commentsQuantity() {
+        return comments.size();
     }
 }

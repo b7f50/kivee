@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<p>Podaj nazwę projektu:</p>
+<form th:action="@{/project}" th:object="${projectForm}" method="post">
+    <p> Nazwa projektu: <input type="text" th:field="*{name}"/></p>
+    <p><input type="submit" value="Dodaj"/></p>
+</form>
+</body>
+</html>

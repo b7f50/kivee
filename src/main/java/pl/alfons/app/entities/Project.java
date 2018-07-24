@@ -1,56 +1,34 @@
 package pl.alfons.app.entities;
 
+import lombok.*;
+import pl.alfons.app.forms.ProjectForm;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Project {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
+    @NonNull
     @Column(nullable = false)
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "project")
-    private Set<Task> tasks = new HashSet<>();
+    private List<Task> tasks = new LinkedList<>();
 
-    public Project() {}
-
-
-    public Project(String name) {
-        this.name = name;
-    }
-
-    public Project (Long id, String name){
-        this.name = name;
-        this.id = id;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-
-    public Set<Task> getTasks() {
-        return tasks;
+    public Project(ProjectForm projectForm) {
+        this.name = projectForm.getName();
     }
 }
