@@ -1,10 +1,11 @@
-package pl.alfons.app.forms;
+package cc.kivee.app.forms;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ProjectForm {
+public class TaskForm {
     private String name;
+    private String description;
 }

@@ -1,9 +1,9 @@
-package pl.alfons.app.entities;
+package cc.kivee.app.entities;
 
+import cc.kivee.app.forms.CommentForm;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import pl.alfons.app.forms.CommentForm;
 
 import javax.persistence.*;
 import java.util.Date;

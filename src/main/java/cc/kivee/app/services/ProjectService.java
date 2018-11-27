@@ -1,11 +1,11 @@
-package pl.alfons.app.services;
+package cc.kivee.app.services;
 
+import cc.kivee.app.entities.Project;
+import cc.kivee.app.forms.ProjectForm;
+import cc.kivee.app.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.alfons.app.entities.Project;
-import pl.alfons.app.forms.ProjectForm;
-import pl.alfons.app.repositories.ProjectRepository;
 
 import java.util.UUID;
 

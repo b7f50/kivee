@@ -1,5 +1,8 @@
-package pl.alfons.app.controllers;
+package cc.kivee.app.controllers;
 
+import cc.kivee.app.forms.CommentForm;
+import cc.kivee.app.forms.TaskForm;
+import cc.kivee.app.services.TaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-import pl.alfons.app.forms.CommentForm;
-import pl.alfons.app.forms.TaskForm;
-import pl.alfons.app.services.TaskService;
 
 @Slf4j
 @Controller

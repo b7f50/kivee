@@ -1,14 +1,14 @@
-package pl.alfons.app.services;
+package cc.kivee.app.services;
 
+import cc.kivee.app.entities.Comment;
+import cc.kivee.app.entities.Task;
+import cc.kivee.app.forms.CommentForm;
+import cc.kivee.app.repositories.CommentRepository;
+import cc.kivee.app.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.alfons.app.entities.Comment;
-import pl.alfons.app.entities.Task;
-import pl.alfons.app.forms.CommentForm;
-import pl.alfons.app.repositories.CommentRepository;
-import pl.alfons.app.repositories.TaskRepository;
 
 import java.util.UUID;
 

@@ -1,5 +1,9 @@
-package pl.alfons.app.controllers;
+package cc.kivee.app.controllers;
 
+import cc.kivee.app.entities.Project;
+import cc.kivee.app.forms.ProjectForm;
+import cc.kivee.app.services.ProjectService;
+import cc.kivee.app.services.TaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-import pl.alfons.app.entities.Project;
-import pl.alfons.app.forms.ProjectForm;
-import pl.alfons.app.services.ProjectService;
-import pl.alfons.app.services.TaskService;
 
 @Slf4j
 @Controller

@@ -1,7 +1,7 @@
-package pl.alfons.app.entities;
+package cc.kivee.app.entities;
 
+import cc.kivee.app.forms.ProjectForm;
 import lombok.*;
-import pl.alfons.app.forms.ProjectForm;
 
 import javax.persistence.*;
 import java.util.LinkedList;

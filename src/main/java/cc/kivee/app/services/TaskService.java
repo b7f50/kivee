@@ -1,14 +1,14 @@
-package pl.alfons.app.services;
+package cc.kivee.app.services;
 
+import cc.kivee.app.entities.Project;
+import cc.kivee.app.entities.Task;
+import cc.kivee.app.forms.TaskForm;
+import cc.kivee.app.repositories.ProjectRepository;
+import cc.kivee.app.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.alfons.app.entities.Project;
-import pl.alfons.app.entities.Task;
-import pl.alfons.app.forms.TaskForm;
-import pl.alfons.app.repositories.ProjectRepository;
-import pl.alfons.app.repositories.TaskRepository;
 
 import java.util.List;
 import java.util.UUID;
