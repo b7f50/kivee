@@ -1,6 +1,6 @@
-package cc.kivee.app.entities;
+package com.b7f50.kivee.entities;
 
-import cc.kivee.app.forms.ProjectForm;
+import com.b7f50.kivee.forms.ProjectForm;
 import lombok.*;
 
 import javax.persistence.*;

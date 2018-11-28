@@ -1,10 +1,10 @@
-package cc.kivee.app.services;
+package com.b7f50.kivee.services;
 
-import cc.kivee.app.entities.Project;
-import cc.kivee.app.entities.Task;
-import cc.kivee.app.forms.TaskForm;
-import cc.kivee.app.repositories.ProjectRepository;
-import cc.kivee.app.repositories.TaskRepository;
+import com.b7f50.kivee.entities.Project;
+import com.b7f50.kivee.entities.Task;
+import com.b7f50.kivee.forms.TaskForm;
+import com.b7f50.kivee.repositories.ProjectRepository;
+import com.b7f50.kivee.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

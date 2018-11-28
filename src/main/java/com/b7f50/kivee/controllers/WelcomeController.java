@@ -1,4 +1,4 @@
-package cc.kivee.app.controllers;
+package com.b7f50.kivee.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

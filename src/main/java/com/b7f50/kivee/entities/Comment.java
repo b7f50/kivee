@@ -1,6 +1,6 @@
-package cc.kivee.app.entities;
+package com.b7f50.kivee.entities;
 
-import cc.kivee.app.forms.CommentForm;
+import com.b7f50.kivee.forms.CommentForm;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

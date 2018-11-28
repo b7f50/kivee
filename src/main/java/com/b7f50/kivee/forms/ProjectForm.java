@@ -1,4 +1,4 @@
-package cc.kivee.app.forms;
+package com.b7f50.kivee.forms;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

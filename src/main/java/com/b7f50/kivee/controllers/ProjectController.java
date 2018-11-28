@@ -1,9 +1,9 @@
-package cc.kivee.app.controllers;
+package com.b7f50.kivee.controllers;
 
-import cc.kivee.app.entities.Project;
-import cc.kivee.app.forms.ProjectForm;
-import cc.kivee.app.services.ProjectService;
-import cc.kivee.app.services.TaskService;
+import com.b7f50.kivee.entities.Project;
+import com.b7f50.kivee.forms.ProjectForm;
+import com.b7f50.kivee.services.ProjectService;
+import com.b7f50.kivee.services.TaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

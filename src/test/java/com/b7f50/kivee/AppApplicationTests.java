@@ -1,4 +1,4 @@
-package cc.kivee.app;
+package com.b7f50.kivee;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

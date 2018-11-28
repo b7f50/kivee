@@ -1,4 +1,4 @@
-package cc.kivee.app.configuration;
+package com.b7f50.kivee.configuration;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Aspect
 public class PerformanceMonitoringConfiguration {
 
-    @Pointcut("execution(* cc.kivee.app..*(..))")
+    @Pointcut("execution(* com.b7f50.kivee..*(..))")
     public void monitor() {
     }
 
@@ -27,7 +27,7 @@ public class PerformanceMonitoringConfiguration {
     @Bean
     public Advisor performanceMonitorAdvisor() {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression("cc.kivee.app.configuration.PerformanceMonitoringConfiguration.monitor()");
+        pointcut.setExpression("com.b7f50.kivee.configuration.PerformanceMonitoringConfiguration.monitor()");
         return new DefaultPointcutAdvisor(pointcut, performanceMonitorInterceptor());
     }
 }

@@ -1,6 +1,6 @@
-package cc.kivee.app.repositories;
+package com.b7f50.kivee.repositories;
 
-import cc.kivee.app.entities.Comment;
+import com.b7f50.kivee.entities.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

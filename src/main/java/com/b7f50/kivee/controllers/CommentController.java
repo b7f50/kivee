@@ -1,7 +1,7 @@
-package cc.kivee.app.controllers;
+package com.b7f50.kivee.controllers;
 
-import cc.kivee.app.forms.CommentForm;
-import cc.kivee.app.services.CommentService;
+import com.b7f50.kivee.forms.CommentForm;
+import com.b7f50.kivee.services.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

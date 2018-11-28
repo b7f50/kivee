@@ -1,4 +1,4 @@
-package cc.kivee.app;
+package com.b7f50.kivee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
