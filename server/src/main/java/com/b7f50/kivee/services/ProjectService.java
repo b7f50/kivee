@@ -18,7 +18,7 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public Project getProjectById(String projectId) {
         UUID uuid = UUID.fromString(projectId);
-        return projectRepository.findOne(uuid);
+        return projectRepository.getOne(uuid);
     }
 
     @Transactional

@@ -25,7 +25,7 @@ public class CommentService {
     @Transactional
     public Comment addNewCommentToTask(CommentForm commentForm, String taskId) {
         UUID uuid = UUID.fromString(taskId);
-        Task existingTask = taskRepository.findOne(uuid);
+        Task existingTask = taskRepository.getOne(uuid);
         if (existingTask == null) {
             return null;
         }

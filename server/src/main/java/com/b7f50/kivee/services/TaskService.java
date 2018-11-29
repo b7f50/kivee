@@ -26,7 +26,7 @@ public class TaskService {
     @Transactional
     public Task saveTaskInProject(TaskForm taskForm, String projectId) {
         UUID uuid = UUID.fromString(projectId);
-        Project existingProject = projectRepository.findOne(uuid);
+        Project existingProject = projectRepository.getOne(uuid);
         if (existingProject == null) {
             return null;
         }
@@ -39,7 +39,7 @@ public class TaskService {
     @Transactional(readOnly = true)
     public Task getTaskById(String taskId) {
         UUID uuid = UUID.fromString(taskId);
-        return taskRepository.findOne(uuid);
+        return taskRepository.getOne(uuid);
     }
 
     @Transactional(readOnly = true)
